@@ -29,10 +29,10 @@ github = oauth.remote_app(
 #use a JSON file to store the past posts.  A global list variable doesn't work when handling multiple requests coming in and being handled on different threads
 #Create and set a global variable for the name of you JSON file here.  The file will be created on Heroku, so you don't need to make it in GitHub
 
+data = 'forum.json'
 try: 
-    with open('forum.json', 'r') as f:
+    with open('forum.json', 'r+') as f:
         data = json.load(f)
-        
 except:
     print("unable to load json")
 
@@ -54,7 +54,6 @@ def post():
     forum_table += Markup("<tr> <td>" + username + "</td> <td>" + message + "</td>")
     forum_table += Markup("</table>")
 
-    
     return render_template('home.html', past_posts = forum_table)
         
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
