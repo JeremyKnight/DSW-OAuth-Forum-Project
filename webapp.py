@@ -43,9 +43,15 @@ def home():
 @app.route('/posted', methods=['POST'])
 def post():
     username = session['user_data']['login']
-    message = 
-    #forum_table = Markup("<table> <tr> <th> Username </th> <th> Message </th> </tr>")
+    message = request.form['message']
     data.append({"username":username, "message":message})
+    
+    forum_table = Markup("<table> <tr> <th> Username </th> <th> Message </th> </tr>")
+    forum_table += Markup("<tr> <td>" + username + "</td> <td>" + message + "</td>")
+    forum_table += Markup("</table>")
+
+    
+    return render_template('home.html', past_posts = forum_table)
         
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
     #Every post should include the username of the poster and text of the post. 
