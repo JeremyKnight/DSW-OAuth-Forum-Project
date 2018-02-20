@@ -43,7 +43,7 @@ def posts_to_html():
         with open('forum.json', 'r+') as f:
             data = json.load(f)
             for i in data:
-            forum_table += Markup("<tr> <td>" + i["username"] + "</td> <td>" + i["message"] + "</td>")
+                forum_table += Markup("<tr> <td>" + i["username"] + "</td> <td>" + i["message"] + "</td>")
     except:
         print("Unable to load json :(")
     forum_table += Markup("</table>")
