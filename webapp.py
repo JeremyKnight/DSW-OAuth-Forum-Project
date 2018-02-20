@@ -34,6 +34,7 @@ def get_data():
     try: 
         with open('forum.json', 'r+') as f:
             data = json.load(f)
+            return data
     except:
         print("unable to load json")
 
