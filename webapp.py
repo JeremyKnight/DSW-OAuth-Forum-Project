@@ -40,7 +40,7 @@ def home():
 def posts_to_html():
     forum_table = Markup("<table> <tr> <th> Username </th> <th> Message </th> </tr>")
     try: 
-        with open('forum.json', 'r+') as f:
+        with open('forum.txt', 'r+') as f:
             data = json.load(f)
             for i in data:
                 forum_table += Markup("<tr> <td>" + i["username"] + "</td> <td>" + i["message"] + "</td>")
@@ -54,7 +54,7 @@ def post():
     username = session['user_data']['login']
     message = request.form['message']
     try: 
-        with open('forum.json', 'r+') as f:
+        with open('forum.txt', 'r+') as f:
             data = json.load(f)
             data.append({"username":username, "message":message})
     except:
