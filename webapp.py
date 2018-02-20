@@ -53,7 +53,7 @@ def posts_to_html():
 def post():
     username = session['user_data']['login']
     message = request.form['message']
-    try: 
+    try:
         with open('forum.json', 'r+') as f:
             data = json.load(f)
             data.append({"username":username, "message":message})
