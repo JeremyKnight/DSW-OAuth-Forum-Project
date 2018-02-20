@@ -40,7 +40,7 @@ def home():
 def posts_to_html():
     forum_table = Markup("<table> <tr> <th> Username </th> <th> Message </th> </tr>")
     try: 
-        with open('forum.txt', 'r+') as f:
+        with open('forum.json', 'r+') as f:
             data = json.load(f)
             for i in data:
                 forum_table += Markup("<tr> <td>" + i["username"] + "</td> <td>" + i["message"] + "</td>")
@@ -54,11 +54,13 @@ def post():
     username = session['user_data']['login']
     message = request.form['message']
     try: 
-        with open('forum.txt', 'r+') as f:
+        with open('forum.json', 'r+') as f:
             data = json.load(f)
             data.append({"username":username, "message":message})
-    except:
+    except Exception as e:
         print("Unable to load JSON :(")
+        print(e)
+        
     return render_template('home.html', past_posts = posts_to_html())
         
     #This function should add the new post to the JSON file of posts and then render home.html and display the posts.  
