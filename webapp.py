@@ -6,6 +6,9 @@ import pprint
 import os
 import json
 
+os.system("echo '[]'>" + 'forum.json')
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
 app = Flask(__name__)
 
 app.debug = True #Change this to False for production
