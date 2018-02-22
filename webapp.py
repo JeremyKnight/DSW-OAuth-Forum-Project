@@ -7,7 +7,6 @@ import os
 import json
 
 os.system("echo '[]'>" + 'forum.json')
-os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
 
