@@ -59,10 +59,11 @@ def post():
     try:
         with open('forum.json', 'r+') as f:
             data = json.load(f)
-            data.append({"username":username, "message":message})
-            f.seek(0)
-            f.truncate()
-            json.dump(data, f)
+            if username!=data[-1]["username"] && message!=data[-1]["message"]:
+                data.append({"username":username, "message":message})
+                f.seek(0)
+                f.truncate()
+                json.dump(data, f)
     except Exception as e:
         print("Unable to load JSON :(")
         print(e)
