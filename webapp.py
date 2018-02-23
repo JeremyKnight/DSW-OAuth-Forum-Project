@@ -105,6 +105,9 @@ def authorized():
 def get_github_oauth_token():
     return session.get('github_token')
 
+def run_once():
+    data.append({"username":"", "message":""})
+
 
 if __name__ == '__main__':
     app.run()
