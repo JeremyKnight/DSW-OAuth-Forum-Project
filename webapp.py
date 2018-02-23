@@ -59,7 +59,7 @@ def post():
     try:
         with open('forum.json', 'r+') as f:
             data = json.load(f)
-            if username!=data[-1]["username"] && message!=data[-1]["message"]:
+            if username!=data[-1]["username"] and message!=data[-1]["message"]:
                 data.append({"username":username, "message":message})
                 f.seek(0)
                 f.truncate()
