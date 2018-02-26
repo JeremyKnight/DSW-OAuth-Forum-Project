@@ -59,11 +59,10 @@ def post():
     try:
         with open('forum.json', 'r+') as f:
             data = json.load(f)
-            if username!=data[-1]["username"] and message!=data[-1]["message"]:
-                data.append({"username":username, "message":message})
-                f.seek(0)
-                f.truncate()
-                json.dump(data, f)
+            data.append({"username":username, "message":message})
+            f.seek(0)
+            f.truncate()
+            json.dump(data, f)
     except Exception as e:
         print("Unable to load JSON :(")
         print(e)
@@ -104,9 +103,6 @@ def authorized():
 @github.tokengetter
 def get_github_oauth_token():
     return session.get('github_token')
-
-def run_once():
-    data.append({"username":"", "message":""})
 
 
 if __name__ == '__main__':
